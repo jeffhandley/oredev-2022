@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using SessionMatch.SessionData;
+using System.Text.RegularExpressions;
 
 namespace SessionMatch
 {
@@ -6,7 +7,7 @@ namespace SessionMatch
     {
         static void Main(string[] args)
         {
-            ArgumentNullException.ThrowIfNullOrEmpty(args);
+            if (args?.Length is null or 0) throw new ArgumentNullException(nameof(args));
             ArgumentNullException.ThrowIfNullOrEmpty(args[0]);
 
             var regex = args[0].ToLowerInvariant() switch
@@ -15,17 +16,24 @@ namespace SessionMatch
                 _ => throw new ArgumentException("Unrecognized tag", args[0])
             };
 
-            bool hasMatch = false;
-            foreach (string session in Directory.EnumerateFiles("Sessions", "*.txt"))
-            {
-                var text = File.ReadAllText(session);
+            using var sessionFile = File.OpenRead("Sessions.json");
+            var sessions = System.Text.Json.JsonSerializer.Deserialize<SessionData.Root>(sessionFile)?.Sessions ?? Enumerable.Empty<Session>();
 
-                if (regex.IsMatch(text))
-                {
-                    hasMatch = true;
-                    Console.WriteLine(session[9..^4]);
-                }
+            bool hasMatch = false;
+            foreach (var session in sessions)
+            {
+                Console.WriteLine(session.TimeOfDay);
             }
+            //foreach (string session in Directory.EnumerateFiles("Sessions", "*.txt"))
+            //{
+            //    var text = File.ReadAllText(session);
+
+            //    if (regex.IsMatch(text))
+            //    {
+            //        hasMatch = true;
+            //        Console.WriteLine(session[9..^4]);
+            //    }
+            //}
 
             if (!hasMatch)
             {
