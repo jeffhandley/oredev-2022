@@ -1,4 +1,3 @@
-.NET. What's new, and what's coming?
 A cheapskate's guide to Azure
 A comprehensive guide to tracker protection on Android
 A Database DevOps Pipeline
@@ -23,6 +22,7 @@ Building Android apps in 2022
 Building for the Edge with Nuxt 3
 Building Platform Engineering from scratch at scale-up
 Building software for the “Next” Economy
+C# with sugar on top
 Code change the world, but for good?
 Coding Complex App Logic, Visually
 Cracking a ransomware family
