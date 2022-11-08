@@ -2,17 +2,17 @@
 
 internal static partial class Program
 {
-    private static IEnumerable<(string, double)> GetStandardDeviationsTyped()
+    public static IEnumerable<(string, double)> GetStandardDeviations()
     {
-        yield return ("sbyte",  Calculate.StandardDeviation(sbytes));
-        yield return ("byte",   Calculate.StandardDeviation(bytes));
-        yield return ("short",  Calculate.StandardDeviation(shorts));
-        yield return ("ushort", Calculate.StandardDeviation(sbytes));
-        yield return ("int",    Calculate.StandardDeviation(ints));
-        yield return ("uint",   Calculate.StandardDeviation(uints));
-        yield return ("long",   Calculate.StandardDeviation(longs));
-        yield return ("ulong",  Calculate.StandardDeviation(ulongs));
-        yield return ("float",  Calculate.StandardDeviation(floats));
-        yield return ("double", Calculate.StandardDeviation(doubles));
+        yield return (nameof(SByte),    Calculate.StandardDeviation(sbytes));
+        yield return (nameof(Byte),     Calculate.StandardDeviation(bytes));
+        yield return (nameof(Int16),    Calculate.StandardDeviation(int16s));
+        yield return (nameof(UInt16),   Calculate.StandardDeviation(uint16s));
+        yield return (nameof(Int32),    Calculate.StandardDeviation(int32s));
+        yield return (nameof(UInt32),   Calculate.StandardDeviation(uint32s));
+        yield return (nameof(Int64),    Calculate.StandardDeviation(int64s));
+        yield return (nameof(UInt64),   Calculate.StandardDeviation(uint64s));
+        yield return (nameof(Single),   Calculate.StandardDeviation(singles));
+        yield return (nameof(Double),   Calculate.StandardDeviation(doubles));
     }
 }
