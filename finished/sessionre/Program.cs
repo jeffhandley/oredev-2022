@@ -22,6 +22,6 @@ partial class Program
         }
     }
 
-    [GeneratedRegex(".net", RegexOptions.IgnoreCase, "en-US")]
+    [GeneratedRegex(@"\.net", RegexOptions.IgnoreCase, "en-US")]
     private static partial Regex SessionMatch();
 }
