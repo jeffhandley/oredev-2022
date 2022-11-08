@@ -1,6 +1,6 @@
 ﻿namespace MathHelpers;
 
-public static class Calculate
+internal static class Calculate
 {
     internal static double StandardDeviation(IEnumerable<sbyte> values, bool isSample = true)
     {
