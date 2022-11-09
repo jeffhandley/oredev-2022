@@ -8,8 +8,11 @@
 
   <ItemGroup>
     <Compile Remove="net7.0\**" />
+    <Compile Remove="snippets\**" />
     <EmbeddedResource Remove="net7.0\**" />
+    <EmbeddedResource Remove="snippets\**" />
     <None Remove="net7.0\**" />
+    <None Remove="snippets\**" />
   </ItemGroup>
 
 </Project>
