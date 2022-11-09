@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Implement the Midpoint function [step 3]</Title>
+            <Description>Implement the Midpoint function (file)</Description>
+            <Shortcut>impl_midpoint_3</Shortcut>
+            <SnippetTypes>
+              <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Code Language="csharp">
+                <![CDATA[using System.Numerics;
+namespace MathHelpers;
+
+public readonly struct WeirdNumber :
+IMinMaxValue<WeirdNumber>,
+IAdditionOperators<WeirdNumber, WeirdNumber, WeirdNumber>,
+IMultiplicativeIdentity<WeirdNumber, WeirdNumber>,
+IDivisionOperators<WeirdNumber, WeirdNumber, WeirdNumber>,
+IModulusOperators<WeirdNumber, WeirdNumber, WeirdNumber>,
+ISubtractionOperators<WeirdNumber, WeirdNumber, WeirdNumber>
+{
+    public static WeirdNumber MinValue { get; } = new WeirdNumber(-10);
+    public static WeirdNumber MaxValue { get; } = new WeirdNumber(40);
+
+    public static WeirdNumber MultiplicativeIdentity => new WeirdNumber(1);
+
+    public static WeirdNumber operator +(WeirdNumber left, WeirdNumber right)
+        => new WeirdNumber(left.Value + right.Value);
+
+    public static WeirdNumber operator /(WeirdNumber left, WeirdNumber right)
+        => new WeirdNumber(left.Value / right.Value);
+
+    public static WeirdNumber operator %(WeirdNumber left, WeirdNumber right)
+        => new WeirdNumber(left.Value % right.Value);
+
+    public static WeirdNumber operator -(WeirdNumber left, WeirdNumber right)
+        => new WeirdNumber(left.Value - right.Value);
+
+    private int Value { get; init; }
+    public WeirdNumber(int num) => Value = num;
+
+    public override string ToString() => Value.ToString();
+}
+]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

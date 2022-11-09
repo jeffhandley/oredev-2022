@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Write WeirdNumber values to console [step 5]</Title>
+            <Description>Write weird number data to the Console (snippet)</Description>
+            <Shortcut>write_weird</Shortcut>
+            <SnippetTypes>
+              <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Code Language="csharp">
+                <![CDATA[Console.WriteLine($$"Min: {WeirdNumber.MinValue} | Mid: {mid} | Max: {WeirdNumber.MaxValue}");
+                Console.WriteLine($$"(Min+Mid): {WeirdNumber.MinValue + mid} | (Max-Mid): {WeirdNumber.MaxValue - mid}");]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

@@ -1,5 +1,17 @@
-﻿using System.Numerics;
-
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Implement CalculateGeneric [step 1]</Title>
+            <Description>Implement the CalculateGeneric class (file)</Description>
+            <Shortcut>impl_calcgeneric_1</Shortcut>
+            <SnippetTypes>
+              <SnippetType>Expansion</SnippetType>
+            </SnippetTypes>
+        </Header>
+        <Snippet>
+            <Code Language="csharp">
+                <![CDATA[using System.Numerics;
 namespace MathHelpers;
 
 internal static partial class Program
@@ -20,3 +32,8 @@ internal static partial class Program
         yield return (nameof(Half), CalculateGeneric.StandardDeviation(halves));
     }
 }
+]]>
+            </Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>
