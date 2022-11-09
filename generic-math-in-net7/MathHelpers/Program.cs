@@ -1,5 +1,4 @@
 using System.Numerics;
-
 namespace MathHelpers;
 
 internal static partial class Program
