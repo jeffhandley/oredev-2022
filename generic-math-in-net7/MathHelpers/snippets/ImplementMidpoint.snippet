@@ -14,35 +14,23 @@
                 <![CDATA[using System.Numerics;
 namespace MathHelpers;
 
-public readonly struct WeirdNumber :
-IMinMaxValue<WeirdNumber>,
-IAdditionOperators<WeirdNumber, WeirdNumber, WeirdNumber>,
-IMultiplicativeIdentity<WeirdNumber, WeirdNumber>,
-IDivisionOperators<WeirdNumber, WeirdNumber, WeirdNumber>,
-IModulusOperators<WeirdNumber, WeirdNumber, WeirdNumber>,
-ISubtractionOperators<WeirdNumber, WeirdNumber, WeirdNumber>
+internal static partial class CalculateGeneric
 {
-    public static WeirdNumber MinValue { get; } = new WeirdNumber(-10);
-    public static WeirdNumber MaxValue { get; } = new WeirdNumber(40);
+    internal static T Midpoint<T>() where T :
+        IMinMaxValue<T>,
+        IMultiplicativeIdentity<T, T>,
+        IAdditionOperators<T, T, T>,
+        IDivisionOperators<T, T, T>,
+        IModulusOperators<T, T, T>
+    {
+        var two = T.MultiplicativeIdentity + T.MultiplicativeIdentity;
 
-    public static WeirdNumber MultiplicativeIdentity => new WeirdNumber(1);
+        var halfMin = T.MinValue / two;
+        var halfMax = T.MaxValue / two;
+        var mods = ((T.MinValue % two) + (T.MaxValue % two) / two);
 
-    public static WeirdNumber operator +(WeirdNumber left, WeirdNumber right)
-        => new WeirdNumber(left.Value + right.Value);
-
-    public static WeirdNumber operator /(WeirdNumber left, WeirdNumber right)
-        => new WeirdNumber(left.Value / right.Value);
-
-    public static WeirdNumber operator %(WeirdNumber left, WeirdNumber right)
-        => new WeirdNumber(left.Value % right.Value);
-
-    public static WeirdNumber operator -(WeirdNumber left, WeirdNumber right)
-        => new WeirdNumber(left.Value - right.Value);
-
-    private int Value { get; init; }
-    public WeirdNumber(int num) => Value = num;
-
-    public override string ToString() => Value.ToString();
+        return halfMin + halfMax + mods;
+    }
 }
 ]]>
             </Code>

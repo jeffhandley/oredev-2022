@@ -14,22 +14,30 @@
                 <![CDATA[using System.Numerics;
 namespace MathHelpers;
 
-internal static partial class Program
+internal static partial class CalculateGeneric
 {
-    public static IEnumerable<(string, double)> GetStandardDeviationsGeneric()
+    internal static double StandardDeviation<T>(IEnumerable<T> values, bool isSample = true)
+        where T : INumber<T>
     {
-        yield return (nameof(SByte), CalculateGeneric.StandardDeviation(sbytes));
-        yield return (nameof(Byte), CalculateGeneric.StandardDeviation(bytes));
-        yield return (nameof(Int16), CalculateGeneric.StandardDeviation(int16s));
-        yield return (nameof(UInt16), CalculateGeneric.StandardDeviation(uint16s));
-        yield return (nameof(Int32), CalculateGeneric.StandardDeviation(int32s));
-        yield return (nameof(UInt32), CalculateGeneric.StandardDeviation(uint32s));
-        yield return (nameof(Int64), CalculateGeneric.StandardDeviation(int64s));
-        yield return (nameof(UInt64), CalculateGeneric.StandardDeviation(uint64s));
-        yield return (nameof(Single), CalculateGeneric.StandardDeviation(singles));
-        yield return (nameof(Double), CalculateGeneric.StandardDeviation(doubles));
-        yield return (nameof(Int128), CalculateGeneric.StandardDeviation(int128s));
-        yield return (nameof(Half), CalculateGeneric.StandardDeviation(halves));
+        int count = values.Count();
+        if (count < 2) return 0;
+
+        double accumulator = 0;
+
+        foreach (var value in values)
+        {
+            double deviation = double.CreateChecked(value) - Mean(values);
+            accumulator += deviation * deviation;
+        }
+
+        return Math.Sqrt(accumulator / (isSample ? count - 1 : count));
+
+        double Mean(IEnumerable<T> values)
+        {
+            double sum = 0;
+            foreach (var value in values) sum += double.CreateChecked(value);
+            return sum / count;
+        }
     }
 }
 ]]>

@@ -2,17 +2,25 @@
 <CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
     <CodeSnippet Format="1.0.0">
         <Header>
-            <Title>Write WeirdNumber values to console [step 5]</Title>
-            <Description>Write weird number data to the Console (snippet)</Description>
-            <Shortcut>write_weird_5</Shortcut>
+            <Title>Write midpoint results to console [step 5]</Title>
+            <Description>Write midpoint data to the Console (snippet)</Description>
+            <Shortcut>write_midpoint_5</Shortcut>
             <SnippetTypes>
               <SnippetType>Expansion</SnippetType>
             </SnippetTypes>
         </Header>
         <Snippet>
+          <Declarations>
+            <Literal>
+              <ID>NumericType</ID>
+              <ToolTip>The Numeric Type to show Midpoint values of</ToolTip>
+              <Default>Half</Default>
+            </Literal>
+          </Declarations>
             <Code Language="csharp">
-                <![CDATA[Console.WriteLine($$"Min: {WeirdNumber.MinValue} | Mid: {mid} | Max: {WeirdNumber.MaxValue}");
-                Console.WriteLine($$"(Min+Mid): {WeirdNumber.MinValue + mid} | (Max-Mid): {WeirdNumber.MaxValue - mid}");]]>
+                <![CDATA[var mid = CalculateGeneric.Midpoint<$NumericType$>();
+                Console.WriteLine($$"Min: {$NumericType$.MinValue} | Mid: {mid} | Max: {$NumericType$.MaxValue}");
+                Console.WriteLine($$"(Min+Mid): {$NumericType$.MinValue + mid} | (Max-Mid): {$NumericType$.MaxValue - mid}");]]>
             </Code>
         </Snippet>
     </CodeSnippet>
