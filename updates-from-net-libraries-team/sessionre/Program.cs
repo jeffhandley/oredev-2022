@@ -20,6 +20,8 @@ partial class Program
                 Console.WriteLine(new string('^', match.Length));
             }
         }
+
+        Console.ReadKey();
     }
 
     [GeneratedRegex(@"\.net", RegexOptions.IgnoreCase, "en-US")]
