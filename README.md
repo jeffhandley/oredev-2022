@@ -1,4 +1,4 @@
-# Demos from Øredev 2022
+# Sessions from Øredev 2022
 
 ## Generic Math in .NET 7
 
