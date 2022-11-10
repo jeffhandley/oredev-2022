@@ -2,11 +2,15 @@
 
 ## Generic Math in .NET 7
 
+[Slides](https://www.slideshare.net/jeff-handley/generic-math-in-net-7)
+
 Using the Generic Math interfaces, you can now implement algorithms without taking direct dependencies on specific numeric types. Abstracting over "numbers" or even just "operators" or "properties" or "functions", algorithms can operate over all numeric primitives in .NET along with domain-specific units and types.
 
 [Demo](generic-math-in-net7)
 
 ## Updates from the .NET Libraries Team
+
+[Slides](https://www.slideshare.net/jeff-handley/updates-from-the-net-libraries-team)
 
 ### System.IO
 
