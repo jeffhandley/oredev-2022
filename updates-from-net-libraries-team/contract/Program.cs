@@ -8,7 +8,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        //var options = new JsonSerializerOptions { TypeInfoResolver = new PropertyPrefixer() };
+        //var options = new JsonSerializerOptions
+        // {
+        //    TypeInfoResolver = new PropertyPrefixer()
+        // };
+
         var options = new JsonSerializerOptions
         {
             TypeInfoResolver = new DefaultJsonTypeInfoResolver
@@ -17,8 +21,9 @@ class Program
             }
         };
 
-        //var json = JsonSerializer.Serialize(new { Value = 42 }, options);
-        var json = JsonSerializer.Serialize(new Model { FirstName = "Jeff", LastName = "Handley", TaxID = "*****" }, options);
+        //var data = new { Value = 42 };
+        var data = new Model { FirstName = "Jeff", LastName = "Handley", TaxID = "*****" }
+        var json = JsonSerializer.Serialize(data, options);
 
         Console.WriteLine(json);
         Console.ReadKey();
