@@ -1,13 +1,12 @@
 ﻿using System.Formats.Tar;
 using System.IO.Compression;
 
-using FileStream inputStream = File.OpenRead("sample.tar.gz");
+using FileStream s = File.OpenRead("dotnet-sdk-7.0.100-linux-x64.tar.gz");
+using GZipStream g = new GZipStream(s, CompressionMode.Decompress);
 
-using GZipStream tarContents = new GZipStream(
-    inputStream,
-    CompressionMode.Decompress);
+System.IO.Directory.CreateDirectory("extracted");
 
 await TarFile.ExtractToDirectoryAsync(
-    source: tarContents,
-    destinationDirectoryName: "~/oredev-2022/sample-tar",
+    source: g,
+    destinationDirectoryName: "extracted",
     overwriteFiles: false);
